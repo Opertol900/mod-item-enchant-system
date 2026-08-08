@@ -1,0 +1,151 @@
+################################################################################
+# Lineage-style item enchant system for AzerothCore 3.3.5a
+################################################################################
+
+[worldserver]
+
+# Master switches
+ItemEnchant.Enable = 1
+ItemEnchant.Debug = 0
+ItemEnchant.EnableLogs = 1
+ItemEnchant.EnableGMCommands = 1
+ItemEnchant.EnableDatabaseCache = 1
+
+# Where enchanting is permitted
+ItemEnchant.DisallowInCombat = 1
+ItemEnchant.DisallowInBattleground = 1
+ItemEnchant.DisallowInArena = 1
+ItemEnchant.AttemptCooldownMs = 750
+ItemEnchant.GossipPageSize = 20
+
+# Item state restrictions
+ItemEnchant.BindOnEnchant = 1
+ItemEnchant.AllowSoulboundOnly = 0
+ItemEnchant.AllowRefundable = 0
+ItemEnchant.AllowAccountBound = 1
+ItemEnchant.AllowQuestItems = 0
+ItemEnchant.AllowHeirloom = 0
+# AzerothCore has no universal transmog state. This compatibility switch is
+# reserved for an optional detector supplied by a transmog integration.
+ItemEnchant.AllowTransmogItems = 1
+
+# Categories
+ItemEnchant.EnableWeaponEnchant = 1
+ItemEnchant.EnableArmorEnchant = 1
+ItemEnchant.EnableShieldEnchant = 1
+ItemEnchant.EnableJewelryEnchant = 1
+ItemEnchant.EnableCloakEnchant = 1
+ItemEnchant.EnableRelicEnchant = 1
+ItemEnchant.EnableOtherEnchant = 0
+
+# Quality restrictions
+ItemEnchant.AllowPoor = 0
+ItemEnchant.AllowCommon = 0
+ItemEnchant.AllowUncommon = 1
+ItemEnchant.AllowRare = 1
+ItemEnchant.AllowEpic = 1
+ItemEnchant.AllowLegendary = 0
+ItemEnchant.AllowArtifact = 0
+# Optional quality ids that always override the Allow* switches above.
+ItemEnchant.BlacklistQualities = ""
+
+# Item filters. Empty AllowedSubclasses/AllowedInventoryTypes means no filter.
+# AllowedClasses are item classes, not player classes. 2=Weapon, 4=Armor.
+ItemEnchant.AllowedClasses = "2,4"
+ItemEnchant.AllowedSubclasses = ""
+ItemEnchant.AllowedInventoryTypes = ""
+# ItemBondingType values: 0 none, 1 pickup, 2 equip, 3 use, 4 quest, 5 quest1.
+ItemEnchant.AllowedBondingTypes = ""
+ItemEnchant.MinItemLevel = 1
+ItemEnchant.MaxItemLevel = 1000
+ItemEnchant.MinRequiredLevel = 0
+ItemEnchant.MaxRequiredLevel = 255
+ItemEnchant.BlacklistItems = ""
+ItemEnchant.BlacklistRanges = ""
+ItemEnchant.BlacklistDisplays = ""
+ItemEnchant.WhitelistMode = 0
+ItemEnchant.WhitelistItems = ""
+
+# ItemTemplate in 3.3.5a has no Expansion field. To filter by expansion,
+# classify entries explicitly: 0=Classic, 1=The Burning Crusade, 2=Wrath.
+# Exact item mappings override ranges. Empty AllowedExpansions disables this filter.
+ItemEnchant.AllowedExpansions = ""
+ItemEnchant.AllowUnknownExpansion = 1
+ItemEnchant.Expansion.ByItem = ""
+ItemEnchant.Expansion.Ranges = ""
+
+# Maximum enchant priority: ByItem > Quality > Category > Global.
+# A value of 0 delegates to the next priority.
+ItemEnchant.GlobalMaxEnchant = 25
+ItemEnchant.GMMaxEnchant = 100
+ItemEnchant.Max.Weapon = 20
+ItemEnchant.Max.Armor = 16
+ItemEnchant.Max.Shield = 16
+ItemEnchant.Max.Jewelry = 16
+ItemEnchant.Max.Cloak = 16
+ItemEnchant.Max.Relic = 16
+ItemEnchant.Max.Other = 0
+ItemEnchant.Max.Poor = 0
+ItemEnchant.Max.Common = 0
+ItemEnchant.Max.Uncommon = 0
+ItemEnchant.Max.Rare = 0
+ItemEnchant.Max.Epic = 0
+ItemEnchant.Max.Legendary = 0
+ItemEnchant.Max.Artifact = 0
+ItemEnchant.Max.Heirloom = 0
+ItemEnchant.Max.ByItem = ""
+
+# Safe levels and special scroll limits
+ItemEnchant.SafeWeaponLevel = 3
+ItemEnchant.SafeArmorLevel = 4
+ItemEnchant.CrystalMaxLevel = 6
+ItemEnchant.EventMaxLevel = 25
+ItemEnchant.EventFailureMode = "keep"
+
+# Scroll item entries
+ItemEnchant.Scroll.Normal = 900100
+ItemEnchant.Scroll.Blessed = 900101
+ItemEnchant.Scroll.Safe = 900102
+ItemEnchant.Scroll.Crystal = 900103
+ItemEnchant.Scroll.Event = 900104
+ItemEnchant.Scroll.GM = 900105
+ItemEnchant.GMSecurityLevel = 2
+
+# Chance to reach each target level, in percent.
+# Missing levels inherit the nearest configured lower level.
+ItemEnchant.Rates.Default = "1:100,2:100,3:100,4:90,5:80,6:70,7:60,8:50,9:40,10:35,11:30,12:25,13:20,14:17,15:14,16:10,17:8,18:6,19:4,20:3,21:2.5,22:2,23:1.5,24:1.2,25:1"
+ItemEnchant.Rates.Weapon = ""
+ItemEnchant.Rates.Armor = ""
+ItemEnchant.Rates.Shield = ""
+ItemEnchant.Rates.Jewelry = ""
+ItemEnchant.Rates.Cloak = ""
+ItemEnchant.Rates.Relic = ""
+ItemEnchant.Rates.Other = ""
+ItemEnchant.ScrollRate.Normal = 1.0
+ItemEnchant.ScrollRate.Blessed = 1.0
+ItemEnchant.ScrollRate.Safe = 1.0
+ItemEnchant.ScrollRate.Event = 1.0
+
+# StatMode: 1=main attributes, 2=all item stats, 3=CustomStats only.
+# FormulaMode: 1=linear percent, 2=fixed amount, 3=percent table, 4=exponential.
+ItemEnchant.StatMode = 1
+ItemEnchant.FormulaMode = 1
+ItemEnchant.LinearPercentPerLevel = 5.0
+ItemEnchant.FixedAmountPerLevel = 3.0
+ItemEnchant.ExponentialMultiplier = 1.03
+ItemEnchant.StatTablePercent = "1:5,2:10,3:15,4:20,5:25"
+
+# Native ITEM_MOD ids can be combined with synthetic ids:
+# 10000 armor, 10001 block, 10002-10007 magic resistances, 10010 weapon damage.
+ItemEnchant.CustomStats = "3,4,5,6,7"
+ItemEnchant.ForbiddenStats = ""
+ItemEnchant.ScaleWeaponDamage = 1
+
+# Optional aura representing the highest equipped enchant level.
+# Format: minimum enchant level:spell id. Disabled by default.
+ItemEnchant.EnableAura = 0
+ItemEnchant.AuraByLevel = "6:0,10:0,16:0,20:0,25:0"
+
+# Optional realm-wide achievement message
+ItemEnchant.BroadcastHighEnchant = 0
+ItemEnchant.BroadcastLevel = 16
