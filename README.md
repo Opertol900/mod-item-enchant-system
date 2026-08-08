@@ -4,6 +4,8 @@ Standalone Lineage II-style item enchant system for AzerothCore 3.3.5a.
 
 Targeted core revision: `a16ef90f282452006a99f25985b54f5568cf507d` (2026-07-21).
 
+MY DISCORD SERVER : https://discord.gg/8pNMKwBmAe
+
 ## Features
 
 - Normal, Blessed, Safe, Crystal, Event, and administrator scrolls.
