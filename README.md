@@ -53,3 +53,9 @@ Wrath heirloom stat distribution is calculated through a core path that does not
 There is no universal server-side "transmogrified" flag shared by AzerothCore transmog modules. `AllowTransmogItems` is therefore an integration reservation and defaults to allowing items; a specific transmog module must expose its state before a reliable deny check can be connected. The enchant module never reads or modifies third-party transmog tables by itself.
 
 See the `docs` directory for architecture, configuration, administration, and extension details.
+
+## Author
+Opertol900
+
+## License
+This project is licensed under the GNU AGPL v3.
